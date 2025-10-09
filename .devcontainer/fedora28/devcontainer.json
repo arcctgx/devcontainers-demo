@@ -1,0 +1,7 @@
+{
+    "name": "Fedora 28",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "remoteUser": "dev"
+}

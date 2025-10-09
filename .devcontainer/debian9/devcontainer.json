@@ -1,0 +1,7 @@
+{
+    "name": "Debian 9 Stretch",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "remoteUser": "dev"
+}
