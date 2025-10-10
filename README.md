@@ -39,12 +39,11 @@ of Dev Containers setup script. This is not needed on UPG-based systems, but
 should not cause problems there.
 
 The most interesting aspect is a workaround required for Fedora / RHEL family
-environments. When the non-root user account is created, its home directory
-is created inside `/run`, and the directory creation is manual, not delegated
-to `adduser`. This workaround prevents problems where non-root user is unable
-to write to its home directory after UID/GID remapping during Dev Containers
-setup phase, despite the permissions and modes being set correctly. It is not
-clear to me why that happens at all, why only in Fedora derivatives, or why
-creating a directory in `/run` (or `/tmp`) is a workaround. It may be related
-to `overlayfs` driver bug, so it could be specific to the Linux kernel version
-I have on my machine.
+environments. After creating the non-root user account, its home directory
+requires an exec bit for the world to be set (by default the world has no
+permissions set at all). Missing world exec bit results in the non-root user
+being unable to write to their own home directory after UID/GID remapping
+done during Dev Containers setup phase, despite user and group permissions and
+modes being set correctly. It is not clear to me why that happens at all, and
+why only on Fedora derivatives, not Debian. It may be related to `overlayfs`
+driver bug, so it could be specific to the Linux kernel version on my machine.
