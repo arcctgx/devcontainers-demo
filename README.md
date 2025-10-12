@@ -32,7 +32,7 @@ package. It is required by Dev Containers extension. It is not installed in
 CentOS 7.9 or Rocky Linux 8.10 environments, because it is already present
 in their respective container images.
 
-In all evironments the group `users` is removed before creating the non-root
+In all evironments the group `users` is removed after creating the non-root
 user account. This is done to accomodate host systems where User Private Groups
 are not used, where the existence of group 100 (`users`) results in a failure
 of Dev Containers setup script. This is not needed on UPG-based systems, but
