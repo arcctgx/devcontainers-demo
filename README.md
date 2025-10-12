@@ -14,11 +14,14 @@ roughly divided into two Linux distribution families:
 
 Each subdirectory provides an environment definition in JSON format, and a
 `Dockerfile` for customizing the original container image. These adjustments
-are required for the Dev Containers VSCode extension to work correctly.
+are required for the Dev Containers VSCode extension to work correctly. The
+environment itself is started by `docker-compose`, based on the provided
+`docker-compose.yml` file.
 
 It is also possible to directly use a container image without any changes,
-or to use a `docker-compose.yml` file for complex environment setup. See
-<https://containers.dev> for the complete documentation.
+or to only use a `Dockerfile` for environment setup. See the documentation
+at <https://containers.dev/implementors/spec/#orchestration-options> for
+in-depth description.
 
 ## Notes about Dockerfile customizations
 

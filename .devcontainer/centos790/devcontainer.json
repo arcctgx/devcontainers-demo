@@ -1,7 +1,7 @@
 {
     "name": "CentOS 7.9",
-    "build": {
-        "dockerfile": "Dockerfile"
-    },
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "devcontainer",
+    "workspaceFolder": "/workspace",
     "remoteUser": "dev"
 }

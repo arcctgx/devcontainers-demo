@@ -6,3 +6,5 @@ RUN useradd -u 11111 -s /bin/bash -m dev && chmod o+x /home/dev
 # the host system, GID remapping during Dev Container setup may fail because
 # group 100 already exists in the container.
 RUN groupdel -f users
+
+CMD ["sleep", "infinity"]
