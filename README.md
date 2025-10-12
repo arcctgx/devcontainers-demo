@@ -1,4 +1,4 @@
-# Developer Containers demo
+# Development Containers demo
 
 The `.devcontainer` directory contains definitions of various developer
 environments based on different container images. The environments are
