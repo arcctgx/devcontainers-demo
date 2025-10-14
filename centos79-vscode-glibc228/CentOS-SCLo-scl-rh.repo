@@ -1,0 +1,15 @@
+# CentOS-SCLo-rh.repo
+#
+# Please see http://wiki.centos.org/SpecialInterestGroup/SCLo for more
+# information
+
+[centos-sclo-rh]
+name=CentOS-7 - SCLo rh
+baseurl =
+  https://vault.centos.org/centos/7/sclo/$basearch/rh/
+  https://archive.kernel.org/centos-vault/centos/7/sclo/$basearch/rh/
+  https://linuxsoft.cern.ch/centos-vault/centos/7/sclo/$basearch/rh/
+  https://mirror.nsc.liu.se/centos-store/centos/7/sclo/$basearch/rh/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-SCLo
