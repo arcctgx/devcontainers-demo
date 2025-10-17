@@ -21,7 +21,14 @@ RUN yum -y install \
 
 WORKDIR /tmp
 
-RUN wget --progress=dot:mega https://mirror.easyname.at/gnu/make/make-4.2.1.tar.gz
+RUN wget --progress=dot:mega \
+    https://mirror.easyname.at/gnu/make/make-4.2.1.tar.gz \
+    https://mirror.easyname.at/gnu/glibc/glibc-2.28.tar.xz \
+    https://github.com/NixOS/patchelf/releases/download/0.18.0/patchelf-0.18.0.tar.gz
+
+COPY CHECKSUMS /tmp
+
+RUN sha256sum -c CHECKSUMS
 
 RUN tar xf make-4.2.1.tar.gz && \
     cd make-4.2.1 && \
@@ -29,8 +36,6 @@ RUN tar xf make-4.2.1.tar.gz && \
     make -j "$(nproc --all)" && \
     make install && \
     cd /usr/local/bin/ && ln -vs make gmake
-
-RUN wget --progress=dot:mega https://mirror.easyname.at/gnu/glibc/glibc-2.28.tar.xz
 
 RUN tar xf glibc-2.28.tar.xz && \
     cd glibc-2.28 && mkdir build && cd build && \
@@ -45,8 +50,6 @@ RUN tar xf glibc-2.28.tar.xz && \
 #RUN (strip --strip-debug /opt/glibc-2.28/lib/lib*.so || true) && \
 #    (strip --strip-debug /opt/glibc-2.28/lib/lib*.a || true) && \
 #    (strip --strip-debug /opt/glibc-2.28/lib/gconv/*.so || true)
-
-RUN wget --progress=dot:mega https://github.com/NixOS/patchelf/releases/download/0.18.0/patchelf-0.18.0.tar.gz
 
 RUN tar xf patchelf-0.18.0.tar.gz && \
     cd patchelf-0.18.0 && \
