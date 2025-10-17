@@ -1,3 +1,7 @@
+# hadolint global ignore=DL3003
+# hadolint global ignore=DL3032
+# hadolint global ignore=DL3033
+
 FROM centos:7.9.2009 AS build
 
 COPY *.repo /etc/yum.repos.d/
