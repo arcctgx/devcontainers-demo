@@ -46,6 +46,17 @@ RUN tar xf glibc-2.28.tar.xz && \
 #    (strip --strip-debug /opt/glibc-2.28/lib/lib*.a || true) && \
 #    (strip --strip-debug /opt/glibc-2.28/lib/gconv/*.so || true)
 
+RUN wget --progress=dot:mega https://github.com/NixOS/patchelf/releases/download/0.18.0/patchelf-0.18.0.tar.gz
+
+RUN tar xf patchelf-0.18.0.tar.gz && \
+    cd patchelf-0.18.0 && \
+    . /opt/rh/devtoolset-8/enable && \
+    ./configure --prefix=/opt/patchelf-0.1.8 && \
+    make -j"$(nproc --all)" && \
+    make install-strip
+
 FROM scratch
 
 COPY --from=build /opt/glibc-2.28 /opt/glibc-2.28
+
+COPY --from=build /opt/patchelf-0.1.8 /opt/patchelf-0.1.8
