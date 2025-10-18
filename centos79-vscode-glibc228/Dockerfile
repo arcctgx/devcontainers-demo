@@ -30,9 +30,9 @@ RUN wget --progress=dot:mega \
     https://mirror.easyname.at/gnu/glibc/glibc-2.28.tar.xz \
     https://github.com/NixOS/patchelf/releases/download/0.18.0/patchelf-0.18.0.tar.gz
 
-COPY CHECKSUMS /tmp
+COPY SHA256SUMS /tmp
 
-RUN sha256sum -c CHECKSUMS
+RUN sha256sum -c SHA256SUMS
 
 RUN tar xf make-4.2.1.tar.gz && \
     cd make-4.2.1 && \
